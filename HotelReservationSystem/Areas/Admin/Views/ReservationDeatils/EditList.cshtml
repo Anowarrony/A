@@ -1,0 +1,94 @@
+﻿@mod@model HotelReservationSystem.Models.Reservation
+
+
+@{
+    ViewBag.Title = "EditList";
+}
+
+<h2>EditList</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Reservation</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Fullname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Fullname)
+            @Html.ValidationMessageFor(model => model.Fullname)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Phonenumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Phonenumber)
+            @Html.ValidationMessageFor(model => model.Phonenumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Country)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Country)
+            @Html.ValidationMessageFor(model => model.Country)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Standard)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Standard)
+            @Html.ValidationMessageFor(model => model.Standard)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Suit)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Suit)
+            @Html.ValidationMessageFor(model => model.Suit)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Deluxi)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Deluxi)
+            @Html.ValidationMessageFor(model => model.Deluxi)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Delux)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Delux)
+            @Html.ValidationMessageFor(model => model.Delux)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

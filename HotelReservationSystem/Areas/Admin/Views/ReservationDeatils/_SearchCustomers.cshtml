@@ -1,0 +1,97 @@
+﻿@model IEnumerable<HotelReservationSystem.Models.Reservation>
+
+        <table id="ReseListTable" class="table table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayName("Fullname")
+                </th>
+                <th style="text-align: center">
+                    @Html.DisplayName("Email")
+                </th>
+                <th>
+                    @Html.DisplayName("Phonenumber")
+                </th>
+            
+                <th>
+                    @Html.DisplayName("Indate")
+                </th>
+                  <th>
+                    @Html.DisplayName("Outdate")
+                </th>
+                <th>
+                    @Html.DisplayName("Standard")
+                </th>
+                <th>
+                    @Html.DisplayName("Suit")
+                </th>
+                <th>
+                    @Html.DisplayName("Deluxi")
+                </th>
+                <th>
+                    @Html.DisplayName("Delux")
+                </th>
+                <th style="text-align: center">
+                    Actions
+                </th>
+       
+            </tr>
+        
+        
+
+        
+
+            
+            @{
+                var count = Model.Count();
+            }
+            @if (count == 0)
+            {
+           
+                <td colspan="8" style="font-family: Arial;font-size: 25px"> <img src="~/Content/icon/dialog_cancel.png" />Nothing Found  <h1 style="font-family: Arial;font-size: 22px;font-weight: bold;color:red">@TempData["Searchname"]</h1></td>
+            }
+    
+               <div id="Lo" style="display: none;position: absolute;left: 50%;top: 14%">
+    <img src="~/Content/icon/ajax-loader(2).gif" />
+</div>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fullname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td style="text-align: center">
+                        @Html.DisplayFor(modelItem => item.Phonenumber)
+                    </td>
+                
+                    <td >
+                        @Html.DisplayFor(modelItem => item.Indate)
+                    </td>
+                        <td style="text-align: center">
+                        @Html.DisplayFor(modelItem => item.Outdate)
+                    </td>
+                    <td style="text-align: center">
+                        @Html.DisplayFor(modelItem => item.Standard)
+                    </td>
+                    <td style="text-align: center">
+                        @Html.DisplayFor(modelItem => item.Suit)
+                    </td>
+                    <td style="text-align: center">
+                        @Html.DisplayFor(modelItem => item.Deluxi)
+                    </td>
+                    <td style="text-align: center">
+                        @Html.DisplayFor(modelItem => item.Delux)
+                    </td>
+                    <td>
+              <i class="icon-edit"></i>          @Html.ActionLink("Edit", "EditList", new { id = item.Id }, new { @class = "lnkEdit",style="background: none" }) |
+                      <i class="icon-book"></i>           @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "lnkDetail",style="background: none" }) |
+                       <i class="icon-trash"></i>          @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "lnkDelete" ,style="background: none"})
+               
+                
+                    </td>
+                </tr>
+            }
+        
+        </table>

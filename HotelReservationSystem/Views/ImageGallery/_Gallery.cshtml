@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - </title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        <link href="~/Content/source/jquery.fancybox.css" rel="stylesheet" />
+         <link href="~/Content/PagedList.css" rel="stylesheet" /> 
+        <link href="~/Content/jquery-ui-1.9.2.custom.css" rel="stylesheet" />
+        <link href="~/Content/Site.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <link href="~/Content/all.css" rel="stylesheet" />
+        <link href="~/Content/styles.css" rel="stylesheet" />
+
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">Online Hotel Booking 
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                                  
+                    <div id='cssmenu'>
+                        <ul>
+                            <li>@Html.ActionLink("Home", "Index", "Home",new{area=""},null)</li>
+                                <li>@Html.ActionLink("Image Gallery", "Gallery", "ImageGallery",new{area=""},null)</li>
+                            <li><a href='#'><span>Log On</span></a>
+                                <ul>
+                                    <li id="menulist">@Html.ActionLink("UserLogOn", "LogOn", "LoginSignUp",new{area="Customer"},null)</li>
+                                    <li id="menulis">@Html.ActionLink("AdminLogOn", "LogOn", "AdminLogOn",new{area="Admin"},null)</li>
+                                </ul>
+        
+
+                            </li>
+                       <li>@Html.ActionLink("Policies & Facilities", "Index", "PoliciesAndFacilities",new{area=""},null)</li>
+                           
+                            <li class='last'>@Html.ActionLink("Contact With Me", "AboutMe", "Home",new{area=""},null)</li>
+  
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        
+
+        <div id="body" >
+            @RenderSection("featured", required: false)
+        
+               @RenderBody()
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>All Rght Preserved By:raselhossaingen@gmail.com</p>
+                </div>
+            </div>
+        </footer>
+
+@*            @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+      *@
+
+    </body>
+</html>
+

@@ -1,0 +1,69 @@
+﻿@model HotelReservationSystem.Models.Customer
+<style>
+     
+    </style>
+<link href="~/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/all.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/all.js"></script>
+@using (Html.BeginForm("SignUp","LoginSignUp",new{area="Customer"},FormMethod.Post)) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Customer</legend>
+
+        <div class="editor-label">
+            @Html.Label("Username")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Username)
+            @Html.ValidationMessageFor(model => model.Username)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Email")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Password")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+           <div class="editor-label">
+            @Html.Label("Confirm Password")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ConfirmPassword)
+            @Html.ValidationMessageFor(model => model.ConfirmPassword)
+        </div>
+        <p>
+            <button type="submit" class="btn btn-primary">
+                <i class="icon-user icon-white"></i> Sign In
+            </button>
+            <span>
+               
+   <button type="button" class="btn btn-danger" id="signupCancelButtonId" onclick="cancelSignUp();">
+  <i class="icon-remove icon-white"></i> Cancel
+</button>
+
+
+            </span>
+           
+        </p>
+    </fieldset>
+}
+
+<script>
+    function cancelSignUp() {
+        location.reload(true);
+        
+    }
+</script>

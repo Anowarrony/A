@@ -1,0 +1,385 @@
+﻿@model HotelReservationSystem.Models.Reservation
+
+
+
+@{
+    ViewBag.Title = "Reserve";
+    Layout = "~/Areas/Customer/Views/CustomerReservation/_Layout.cshtml";
+}
+
+<style>
+    th{background: green;color: #fff;font-family: Courier New;font-size: 19px;}
+</style>
+
+<link href="~/Chosen/chosen.css" rel="stylesheet" />
+
+
+<a href="#button" class="button icon log" id="roomDetailsDialogId" style="position: absolute;right:5%">Room-Details</a>
+  <div id="successNotification"></div>
+<div id="container">
+@using (Html.BeginForm()) {
+   
+ @Html.ValidationSummary(true)
+      <div class="editor-label">
+            @Html.LabelFor(model => model.Fullname)
+        </div>
+        <div class="editor-field">
+      @Html.TextBoxFor(model => model.Fullname,new{style="height: 27px"})
+            @Html.ValidationMessageFor(model => model.Fullname)
+        </div>
+
+       <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Email,new{style="height: 27px"})
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label" id="">
+          
+            @Html.LabelFor(model => model.Phonenumber)
+        </div>
+        <div class="editor-field">
+               @Html.TextBoxFor(model => model.Phonenumber,new{style="height: 27px"})
+            @Html.ValidationMessageFor(model => model.Phonenumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Country)
+        </div>
+        <div class="editor-field">
+                     @Html.DropDownList("Country",new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Bangladesh",Value = "Bangladesh"},
+                new SelectListItem{Text = "India",Value = "India"},
+                new SelectListItem{Text = "Pakistan",Value = "Pakistan"},
+                 new SelectListItem{Text = "Srilanka",Value = "Srilanka"},
+                new SelectListItem{Text = "China",Value = "China"},
+                 new SelectListItem{Text = "Nepal",Value = "Nepal"},
+                new SelectListItem{Text = "England",Value = "England"},
+                 new SelectListItem{Text = "America",Value = "America"},
+                new SelectListItem{Text = "South Africa",Value = "South Africa"}
+            },"Select Country",new{@class="chzn-select"})
+            @Html.ValidationMessageFor(model => model.Country)
+        </div>
+
+  
+        <div class="editor-field">
+            
+                    <label for="start">In date:</label>@Html.TextBoxFor(m=>m.Indate,new{id="start",style="width: 220px"})
+               
+            @Html.ValidationMessageFor(model => model.Indate)
+        </div>
+
+  
+        <div class="editor-field">
+            <label for="end">Out date:</label>
+     
+               @Html.TextBoxFor(m=>m.Outdate,new{id="end",style="width: 220px"})
+            @Html.ValidationMessageFor(model => model.Outdate)
+        </div>
+        <div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Standard)
+        </div>
+        <div class="editor-field">
+               <select name="Standard" id="standard" class="chzn-select">
+                              <option value="">select</option>
+                              @for (int i = 1;
+                                   i <= 15; 
+                                   i++)
+                                   {
+                                       <option value='@i'>@i</option>
+                                   }
+
+                          </select>
+            @Html.ValidationMessageFor(model => model.Standard)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Suit)
+        </div>
+        <div class="editor-field">
+               <select name="Suit" id="suit" class="chzn-select">
+                              <option value="">select</option>
+                              @for (int i = 1;
+                                   i <= 20; 
+                                   i++)
+                                   {
+                                       <option value='@i'>@i</option>
+                                   }
+
+                          </select>
+            @Html.ValidationMessageFor(model => model.Suit)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Deluxi)
+        </div>
+        <div class="editor-field">
+                 <select name="Deluxi" id="deluxi" class="chzn-select"> 
+                              <option value="">select</option>
+                              @for (int i = 1;
+                                   i <= 25; 
+                                   i++)
+                                   {
+                                       <option value='@i'>@i</option>
+                                   }
+
+                          </select>
+            @Html.ValidationMessageFor(model => model.Deluxi)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Delux)
+        </div>
+        <div class="editor-field">
+                <select name="Delux" id="delux" class="chzn-select">
+                              <option value="">select</option>
+                              @for (int i = 1;
+                                   i <= 30; 
+                                   i++)
+                                   {
+                                       <option value='@i'>@i</option>
+                                   }
+
+                          </select>
+            @Html.ValidationMessageFor(model => model.Delux)
+        </div>
+            <br/>
+        <p>
+     
+            
+            <button type="submit" id="ReservationBtnId" class="btn btn-success  " style="width: 120px;font-family: Arial;font-size: 21px">
+                <i class="icon-home icon-white"></i> Book
+            </button>
+      
+        </p>
+            </div>
+      
+}
+</div>
+
+<p></p>
+
+   
+
+
+  
+        
+   
+  
+
+ 
+
+<div id="roomDetailsId" style="display: none">
+
+       
+    <table border='2px' class="table table-bordered" >
+                
+        
+                
+        <tr>
+            <th >Room Type</th>
+            <th colspan="2" style="text-align: center">Rent(<b>Per day</b>)</th>
+            <th>Airconditioned</th>
+            <th style="text-align: center">Image</th>
+    
+        </tr>
+           
+        <tr>
+            <td style="text-align: center">Standard</td>
+            <td>6000 Taka(<b>Double</b>) </td>
+            <td>5500 Taka(<b>Single</b>) </td>
+            <td rowspan="4" style="text-align: center;">24 Hours </td>
+            <td>
+                <img src="~/Images/slideImages/Photo055.jpg" style="width: 100px;height: 100px" />
+
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center">Suit</td>
+            <td>5000 Taka(<b>Double</b>) </td>
+            <td>4500 Taka(<b>Single</b>) </td>
+         
+            <td>
+                <img src="~/Images/slideImages/ssdsd.jpg" style="width: 100px;height: 100px" />
+
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center">Deluxi</td>
+            <td>4000 Taka(Double) </td>
+            <td>3500 Taka(Single) </td>
+            <td>
+                <img src="~/Images/deluxe.jpg" style="width: 100px;height: 100px" />
+
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center">Delux</td>
+            <td>3500 Taka(<b>Double</b>) </td>
+            <td>3200 Taka(<b>Single</b>) </td>
+            <td>
+         
+                <img src="~/Images/slideImages/delu.jpg" style="width: 100px;height: 100px"/>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<div id="jqxNotification" style="font-family: Arial;font-size: 25px">
+    Please click Room Details link to know details about rooms(e.g. Rooms type,Rent etc.) before reservation
+
+</div>
+
+  <div  id="divLoading" style="display: none">
+          
+                     <img src="~/Images/ajax-loader.gif" style="background-position: center;position: relative;left: 40%;top: 10px"/><br /><br/>      
+      </div>
+<input type="hidden" value="@ViewBag.notificationHideId" id="notificationHideId"/>
+<input type="hidden" value="@ViewBag.RoomReqMessId" id="RoomReqMsgId"/>
+<input type="hidden" value="@ViewBag.postMethodId " id="postMethodId"/>
+<input type="hidden" value="@ViewBag.MobNoInvalidId" id="MovNoInvMessId"/>
+
+   
+   <script src="~/Chosen/chosenMain.js"></script>      
+        <script src="~/Chosen/mootools-more-1.4.0.1.js"></script>
+        <script src="~/Chosen/chosen.js"></script>
+    
+        <script> $$(".chzn-select").chosen({ filtering: true });
+
+    </script>
+
+
+@section Scripts{
+       
+<script src="~/Scripts/jquery-1.7.1.js"></script>
+<script src="~/Scripts/jquery-ui-1.8.20.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/JqxWidgets/jqxcore.js"></script>
+<script src="~/JqxWidgets/jqxnotification.js"></script>
+<script src="~/KendoUI/kendo.all.min.js"></script>
+ <script>
+     function loading() {
+         $('#divLoading').dialog({
+             title: '<span style="font-family:Courier New;"> Please Wait...</span>', open: function (event, ui) {
+                 $(".ui-dialog-titlebar-close").hide();
+
+             }
+         });
+
+     }
+
+     $("#ReservationBtnId").click(function () {
+         if ($("#Fullname").val() != "" && $("#Email").val() != "" && $("#Phonenumber").val() != ""  && $("#start").val() != "" && $("#end").val() != "")
+             loading();
+     });
+
+     $("#roomDetailsDialogId").click(function () {
+
+         $("#jqxNotification").jqxNotification("closeLast");
+         $("#roomDetailsId").dialog({
+             title: '<p ><img src="/Content/symbol_information.png" width="35"/> <span style="font-family:Courier New;font-size:22px;">Room Details</span></p>',
+             width: 800,
+             buttons: {
+                 "Close": function () {
+                     $(this).dialog('close');
+                 }
+             }
+         });
+
+
+     });
+    </script>
+    
+    
+
+    
+<script type="text/javascript">
+    if ($("#notificationHideId").val() != 1 && $("#postMethodId").val() != 1) {
+        $(document).ready(function () {
+
+            $("#jqxNotification").jqxNotification({
+                width: "80%",
+                position: "top-left",
+                opacity: 0.9,
+                autoOpen: true,
+                animationOpenDelay: 800,
+                autoClose: false,
+                template: "success"
+            });
+        });
+    } 
+    if ($("#RoomReqMsgId").val() == 1) {
+        showSuccessNotification(' <img src="/Content/remove.png" width="33"/> You have to <b>select</b> at least <b>one</b> room type');
+
+    }
+
+    if ($("#MovNoInvMessId").val() == 1) {
+        showSuccessNotification(' <img src="/Content/remove.png" width="33"/> Sorry, your provided <b>phone number</b> is not a valid <b>Bangldeshi </p> phone number. ');
+
+    }
+
+
+
+    $(document).ready(function () {
+        function startChange() {
+            var startDate = start.value(),
+                endDate = end.value();
+
+            if (startDate) {
+                startDate = new Date(startDate);
+                startDate.setDate(startDate.getDate());
+                end.min(startDate);
+            } else if (endDate) {
+                start.max(new Date(endDate));
+            } else {
+                endDate = new Date();
+                start.max(endDate);
+                end.min(endDate);
+            }
+        }
+
+        function endChange() {
+            var endDate = end.value(),
+                startDate = start.value();
+
+            if (endDate) {
+                endDate = new Date(endDate);
+                endDate.setDate(endDate.getDate());
+                start.max(endDate);
+            } else if (startDate) {
+                end.min(new Date(startDate));
+            } else {
+                endDate = new Date();
+                start.max(endDate);
+                end.min(endDate);
+            }
+        }
+
+        var start = $("#start").kendoDatePicker({
+            change: startChange, format: 'yyyy/MM/dd'
+        }).data("kendoDatePicker");
+
+        var end = $("#end").kendoDatePicker({
+            change: endChange, format: 'yyyy/MM/dd'
+        }).data("kendoDatePicker");
+
+        start.max(end.value());
+        end.min(start.value());
+    });
+
+
+    function showSuccessNotification(text) {
+        $("#successNotification").html('<h2>' + text + '</h2>').fadeIn().delay(6000).fadeOut();
+    }
+
+
+</script>
+
+   
+}

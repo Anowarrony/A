@@ -1,0 +1,112 @@
+﻿@model HotelReservationSystem.Areas.Customer.Models.UserLogOn
+
+@{
+    ViewBag.Title = "LogOn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div id="hdes">Welcome to  Login page.To Book our Hotel Login .If you have not registered yet ,go to Sign Up Link.</div>
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/SignUp.js"></script>
+<script src="~/Scripts/LoginFailed.js"></script>
+@using (Html.BeginForm()) {
+  
+    <div style="font-family: Arial;border: 10px solid khaki;background: white;width: 650px;height: 450px;position: absolute;left: 25%;top: 25%" class="img-circle">
+        <fieldset>
+            <div style="position: absolute;left: 26%;top: 35%">
+            <legend>UserLogOn</legend>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Username)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Username,new{id="adBox",@class="UsernameTextBoxId"})
+                @Html.ValidationMessageFor(model => model.Username)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Password)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(model => model.Password,new{id="adBox",@class="PasswordTextBoxId"})
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+
+            <p>
+            <button type="submit" class="btn btn-primary " id="UserLoginBtnId">
+  <i class="icon-hand-down icon-white"></i> Log in
+</button>
+            </p>
+            @Html.ValidationSummary(true)
+ </div>
+        </fieldset>
+        </div>
+}
+
+<div id="" style="position: absolute;left: 37%;top: 29%;font-family: Arial;font-size: 21px;font-weight:bold">
+
+    <u>
+      
+
+        @Html.ActionLink("SignUp", "SignUp", new{area="Customer"}, new { id = "lnkCreate" })
+    </u>  <img src="~/Content/icon/link.png" width="90px" style="position: absolute;top: 100%;left: 5%"/>If you didn't Register yet
+
+    </div>
+
+
+	
+
+  <div  id="divLoading" style="display: none">
+     
+     
+        
+                     <img src="~/Images/ajax-loader.gif" style="background-position: center;position: relative;left: 40%;top: 10px"/><br /><br/> 
+
+		
+       
+      </div>
+
+<div id="dialog-alert" style="display: none">
+<p>
+@TempData["msg"]!
+</p>
+</div>
+ 
+<div id="dialog-confirm" style="display: none">
+<p>
+<span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+Are you sure to delete?
+</p>
+</div>
+
+<div id="dialog-edit" style="display: none">
+</div>
+<div id="dialog-detail" style="display: none">
+</div>
+ 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $("#lnkCreate").css('background', 'none');
+
+        function loading() {
+
+
+
+            $('#divLoading').dialog({
+                title: '<span style="font-family:Courier New;"> Please Wait...</span>', open: function (event, ui) {
+                    $(".ui-dialog-titlebar-close").hide();
+
+                }
+            });
+
+        }
+        $("#UserLoginBtnId").click(function () {
+            if ($(".UsernameTextBoxId").val() != "" && $(".PasswordTextBoxId").val() != "") {
+                loading();
+            }
+        });
+    </script>
+}

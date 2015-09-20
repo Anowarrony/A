@@ -1,0 +1,215 @@
+﻿
+
+
+
+@model IEnumerable<HotelReservationSystem.Models.Reservation>
+
+@{
+    ViewBag.Title = "ReservationInfoList";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link href="~/bootstrap.css" rel="stylesheet" />
+<link href="~/GithubCss/gh-buttons.css" rel="stylesheet" />
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<a href="@Url.Action("LogOff","AdminLogOn",new{area=""})" class="button" style="position: absolute;right: 10px;">Log Out</a>
+<div  style="font-family: Arial;">
+<h2 style="text-align: center;color: green"><u>ReservationInfoList</u></h2>
+    
+
+ 
+  
+    
+    
+    <table>
+        <tr>
+            
+            <td>
+                @using (Ajax.BeginForm("ReservationInfoList", "ReservationDeatils", null, new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "divDis", LoadingElementId = "loadingId" }))
+        {
+            
+            <b style="color: #BDB76B;font-size: 26px;font-family: Rockwell;font-weight: bold">   <text>Search By Name</text>  </b>  <input type="text" name="searchName" style="height: 35px;" id="txtSearch"/>
+       
+            
+            
+                <button type="submit" class="btn btn-large">
+                <i class="icon-search "></i> Search
+            </button>
+                                               
+        }
+ 
+            </td><td>       <div id="loadingId" style="display: none">
+                <img src="~/Images/ajax-loader.gif" />
+    </div></td>
+        </tr>
+        <tr>
+            <td>
+                <div id="divDis">
+        
+
+
+                    <div>@Html.Partial("_SearchCustomers")</div>
+    
+    
+
+                </div>
+  
+            </td>
+        </tr>
+        <tr>
+            <td>  
+      @*          @Html.PagedListPager(Model, page => Url.Action("ReservationInfoList", "ReservationDeatils", new { page }))*@
+
+       </td>
+        </tr>
+    </table>
+  
+   
+   
+        
+  
+</div>
+    
+<div id="dialog-alert" style="display: none">
+<p>
+@TempData["msg"]!
+</p>
+</div>
+ 
+<div id="dialog-confirm" style="display: none">
+<p style="font-family: Arial;font-size: 19px">
+<span  style="float: left; margin: 0 7px 20px 0;"></span>
+
+    <img src="~/Content/icon/1405880767_warning_48.png" />
+    Are you sure to delete?
+</p>
+</div>
+ 
+<div id="dialog-edit" style="display: none">
+</div>
+<div id="dialog-detail" style="display: none">
+</div>
+
+
+    
+    
+<script>
+    $(document).ready(function () {
+        $(".hi").hide();
+        var url = "";
+ 
+        if ('@TempData["msg"]' != "") {
+            $("#dialog-alert").dialog('open');
+        }
+
+        $("#dialog-edit").dialog({
+            title: 'Create User',
+            autoOpen: false,
+            resizable: false,
+            width: 400,
+            position:[370,20],
+            show: { effect: 'drop', direction: "up" },
+            modal: true,
+            draggable: false,
+            open: function (event, ui) {
+                $(".ui-dialog-titlebar-close").hide();
+                $(this).load(url);
+            }
+        });
+
+        $("#dialog-confirm").dialog({
+            autoOpen: false,
+            title: ' Delete Pannel',
+            resizable: false,
+            height: 210,
+            width: 350,
+            position: [370, 120],
+            show: { effect: 'drop', direction: "up" },
+            modal: true,
+            draggable: true,
+            open: function (event, ui) {
+                $(".ui-dialog-titlebar-close").hide();
+
+            },
+            buttons: {
+                "OK": function () {
+                    $(this).dialog("close");
+                    window.location.href = url;
+                },
+                "Cancel": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        $("#dialog-detail").dialog({
+            title: 'Customer Details',
+            autoOpen: false,
+            resizable: false,
+            width:500,
+            position:[370,20],
+            show: { effect: 'drop', direction: "up" },
+            modal: true,
+            draggable: false,
+            open: function (event, ui) {
+                $(".ui-dialog-titlebar-close").hide();
+                $(this).load(url);
+            },
+            buttons: {
+                "Close": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+    
+
+        $(".lnkEdit").live("click", function (e) {
+            // e.preventDefault(); use this or return false
+            url = $(this).attr('href');
+            $(".ui-dialog-title").html("Update Customer");
+            $("#dialog-edit").dialog('open');
+
+            return false;
+        });
+
+        $(".lnkDelete").live("click", function (e) {
+            // e.preventDefault(); use this or return false
+           
+            url = $(this).attr('href');
+            $("#dialog-confirm").dialog('open');
+
+            return false;
+        });
+
+        $(".lnkDetail").live("click", function (e) {
+            // e.preventDefault(); use this or return false
+            url = $(this).attr('href');
+            $("#dialog-detail").dialog('open');
+
+            return false;
+        });
+
+        $("#btnClose").live("click", function (e) {
+            $("#dialog-edit").dialog("close");
+            return false;
+        });
+    });
+</script>
+   
+    
+   <script>
+       $(function () {
+
+           $("#txtSearch").autocomplete({
+               source: '@Url.Action("GetCustomers")', minLength: 2
+        });
+
+     });
+
+
+</script> 
+     

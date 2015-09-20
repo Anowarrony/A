@@ -1,0 +1,192 @@
+
+/*Css menu*/
+#menulist:hover{  background-color: #0081c2;}
+/*Home   Index*/
+
+#hdes{ font-family: Arial;padding: 10px;width: 100%;height: 100px;background: bisque;font-size: 25px;text-align: center}
+#v{ position: absolute;left:25% }
+
+/*Home Slide Show*/
+body {
+	/*background: url(/Images/slideImages/Photo055.jpg) repeat;*/
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight:300;
+	text-align: left;
+	text-decoration: none;
+}
+
+.slider img{width:800px;height:350px;display:none;}
+.slider{width:800px;height:350px;overflow:hidden;margin:30px auto;}
+
+.shadow{background-repeat:no repeat;
+background-position:top;width:864px;height:144px;margin:60px auto;}
+
+#birday{font-size: 25px;font-weight: bold;border: 0px solid red;background: white;width: 15%;height: 100px;color:#768331;position: absolute;top: 29%;left: 1%;font-family: Arial}
+#divBirthDescription{ border: 0px solid black;background: white;color: black;position: absolute;top: 38%;left: 1%;width: 15%;height: 100px;font-family: Arial;font-size: 18px;}
+#ReserIcon{ border: 0px solid red;width: 15%;background: white;position: absolute;top: 29%;right: 1%;height: 100px;font-family: Arial;font-size: 25px;color: #768331;font-weight: bold }
+#ReserIcondescription{ border: 0px solid black;background: white;color: black;position: absolute;top: 38%;right: 1%;width: 15%;height: 100px;font-family: Arial;font-size: 18px;}
+#sl{background:url(/Images/slideImages/Photo055.jpg)}
+
+/*Log On */
+   #logmess {
+     
+        color: darkslategrey;
+        font-family: Courier New;
+        font-weight: bold;
+       font-size: 20px;
+   
+      
+       
+      
+
+    }
+#logCircle{width: 600px;height: 400px;background: white;position: absolute;left: 25%;top: 25%}
+#btnsub{ width: 220px;height: 40px;font-family: Arial;font-size: 23px;font-weight: bold}
+#logfield{position: absolute;left: 28%;top: 26%}
+#logTitle{ position: absolute;top: -40%;left: 20%;font-weight: bolder;}
+
+/*Dialog SignUp*/
+
+/*#btnSignUp{ width: 120px;height: 45px;font-weight: bold;background: #FFC0CB}*/
+
+/*#cancelSignup{ width: 100px;height: 45px;background: #C04000;}*/
+
+#cancelSignup{
+  color:#ffffff;
+  background-color: #c43c35;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ee5f5b), to(#c43c35));
+  background-image: -moz-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -ms-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ee5f5b), color-stop(100%, #c43c35));
+  background-image: -webkit-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -o-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: linear-gradient(top, #ee5f5b, #c43c35);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ee5f5b', endColorstr='#c43c35', GradientType=0);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-color: #c43c35 #c43c35 #882a25;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+
+}
+
+/*SignUp Direct*/
+#btnSignupDirect{ width: 230px;height: 42px;font-family: Arial;font-size: 25px;font-weight: bold}
+#divDirectSignups{font-family: Arial;border: 8px solid #768331; position: absolute;top: 25%;left: 30%;width:520px;height: 350px;background: wheat}
+#divDirectSignupDes{ font-family: Arial;border: 2px solid hotpink;background: gray;width: 100%;height: 60px;}
+#divDirectSignupDes{font-family: Arial;border: 2px solid hotpink;background:black;color: white;width: 100%;height: 60px;text-align: center;font-size: 22px;}
+
+
+/*Reservevation Table*/
+td{ font-size: 15px;text-align: center}
+#divreservetab {
+    font-family: Arial; border: 10px solid sienna;width: 45%;height: 600px;position: absolute;left: 25%;top: 13.4%;background: white
+}
+#resTableField {
+    position: absolute;left: 20%
+}
+
+#divbtnreserve{ height: 45px;width: 210px;font-size: 25px;font-weight: bold}
+#redes{ text-align: center;color: wheat;position: relative;top: 0%;font-family: Arial;font-weight: bold;font-size: 20px;padding: 10px;width: 51%;background:seagreen}
+
+#resRoomReq{ color: red;font-family: Arial;padding: 10px;background: white;width: 19%;height: 12px;font-size: 19pz}
+
+/*Reservation Info List*/
+#listMess{ text-align: center;color: white}
+#ReseListTable{width: 100%;height: 25%;background: white;position: absolute;left: 1%;top: 25%;text-align: center}
+
+
+/*Room details*/
+#suitImage{height: 80px}
+th{background: saddlebrown;color: white;font-size: 20px;font-weight: bold}
+#divRommdetaAllTab{font-family: Arial;position: absolute;left: 22%}
+
+#tblMain{text-align: center;background:navy;font-size: 23px;font-weight: bold}
+
+/*AdminLogOn*/
+#adBox{width: 200px;height: 25px}
+#ue{position: absolute;left: 40%;top:45%}
+#adbtnlog{width: 210px;height: 45px;position: absolute;top: 100%}
+
+/*Policies page*/
+
+
+    #col{font-size: 23px;padding: 10px;width: 100%;border: 15px solid gold;background: white;position: absolute;top:17%;left: 0%;font-family: Arial}
+  
+   u{ font-size: 27px;color: darkmagenta;font-weight: bold;font-style: inherit}*/
+   
+     /*User Logon Page*/
+ 
+    #uploadImageError{ color: red;position: absolute;top: 15%;font-size: 23px;padding: 10px;height: 30px;font-family: Arial;left: 62%;background: white}
+       #uploadImageErro{ color: red;position: absolute;top: 22%;font-size: 23px;padding: 10px;height: 32px;font-family: Arial;left: 62%;background: white}
+    
+        #uploadImageError{ color: red;position: absolute;top: 15%;font-size: 23px;padding: 10px;height: 59px;font-family: Arial;left: 62%;background: white}
+   
+#head{color: khaki;position: relative;left:40%}
+  .m {
+  color:#ffffff;
+  background-color: #57a957;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#62c462), to(#57a957));
+  background-image: -moz-linear-gradient(top, #62c462, #57a957);
+  background-image: -ms-linear-gradient(top, #62c462, #57a957);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #62c462), color-stop(100%, #57a957));
+  background-image: -webkit-linear-gradient(top, #62c462, #57a957);
+  background-image: -o-linear-gradient(top, #62c462, #57a957);
+  background-image: linear-gradient(top, #62c462, #57a957);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#62c462', endColorstr='#57a957', GradientType=0);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-color: #57a957 #57a957 #3d773d;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+     #uploadButton{ position: relative;left: 28%;width: 150px;height: 40px;bottom: 8%}
+
+  .ca{
+      position: absolute;
+    
+      bottom: 10%;
+      left: 30%;
+  color:#ffffff;
+  background-color: #c43c35;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ee5f5b), to(#c43c35));
+  background-image: -moz-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -ms-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ee5f5b), color-stop(100%, #c43c35));
+  background-image: -webkit-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -o-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: linear-gradient(top, #ee5f5b, #c43c35);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ee5f5b', endColorstr='#c43c35', GradientType=0);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-color: #c43c35 #c43c35 #882a25;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+
+}
+   #can{width: 80px}
+ th{text-align: center}
+
+ /*Gallery*/
+ #im{width:300px; height:300px}
+
+
+ #successNotification {
+     
+        display: none;
+        background-repeat: no-repeat;
+        position: absolute;
+         min-width: 50%;     max-width: 80%;
+         min-height: 70px;
+        top: 0%;
+        right: 24%;
+        background-color: #67b22d;
+        color: white;
+        text-align: center;
+        font-family: Courier New;
+         font-size: 20px;
+    }
+     #successNotification h2 {
+            position: relative;
+            padding: 0PX;
+            margin: 0PX;
+            top: 25%;
+            font-size: 22px;
+        }             

@@ -1,0 +1,42 @@
+﻿@model List<HotelReservationSystem.Models.ImagGallary>
+
+@{
+    ViewBag.Title ="Gallery";
+    
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+   #j{width: 1000px}
+  
+</style>
+
+        <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.8.20.min.js"></script>
+        <script src="~/Content/source/jquery.fancybox.js"></script>
+        <script src="~/Content/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+        <script src="~/Scripts/image.js"></script>
+
+<table style="background: white;">   
+    @{
+        var j = 0;
+        for (var i = 0; i < Model.Count(); i+=4)
+        {
+            j = i;
+            <tr>
+                
+                @while (j < i+4 && j < Model.Count())
+             {
+                    <td>
+                   <a id="j" class="fancybox-effects-d" href="data:image/png;base64,@Convert.ToBase64String(Model[j].Image,0,Model[j].Image.Length)"  title="@Convert.ToString(Model[j].Description)">   <img id="im" src="data:image/png;base64,@Convert.ToBase64String(Model[j].Image,0,Model[j].Image.Length)"   /></a>  
+                    </td>
+                    j++;
+             }
+            </tr>
+        }
+    }
+</table>
+
+
+

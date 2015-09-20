@@ -1,0 +1,89 @@
+﻿@model HotelReservationSystem.Models.Admin
+
+@{
+    ViewBag.Title = "LogOn";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-1.7.1.js"></script>
+
+
+<link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/all.css" rel="stylesheet" />
+<link href="~/Content/templatemo_style.css" rel="stylesheet" />
+<div id="hdes">Welcome to Admin Login page.To see Customer's Information and customize Everything please login.</div>
+    
+<div id="templatemo_container">
+
+	<div id="templatemo_site_title_wrapper">
+    
+    	<div id="site_title">
+            <h1>
+                <a href="#" target="_parent">Admin Login
+                <span id="t">Login to customise everything</span></a>
+            </h1>
+        </div>
+    
+    </div> 
+    
+	<div id="templatemo_banner">
+    <div id="ue">
+
+@using (Html.BeginForm()) {
+  
+                   
+          <div class="editor-label" style="color: white">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Email)
+            
+       
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label" style="color: white">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+                   @Html.PasswordFor(model => model.Password)
+                  
+             @Html.ValidationMessageFor(model => model.Password)
+        </div>
+                             
+        <p>
+            <input type="submit" value="LogOn" class="btn " id="adbtnlog"/>
+        </p>
+    @Html.ValidationSummary(true)
+}
+
+    </div>
+
+
+    </div> 
+
+        <div id="templatemo_menu">
+            
+    </div>
+</div> 
+<div  id="divLoading" style="display: none">       
+                     <img src="~/Images/ajax-loader.gif" style="background-position: center;position: relative;left: 40%;top: 10px"/><br /><br/>        
+      </div>
+
+<script>
+    function loading() {
+
+
+
+        $('#divLoading').dialog({ title: '<span style="font-family:Courier New;"> Please Wait...</span>' });
+
+    }
+
+    $("#adbtnlog").click(function() {
+        if ($("#Email").val() != "" && $("#Password").val() != "") {
+            loading();
+        }
+    });
+
+</script>
+    @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")}

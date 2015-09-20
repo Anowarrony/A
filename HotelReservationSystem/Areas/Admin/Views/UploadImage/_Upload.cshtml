@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+ 
+    
+    
+ <head>
+        
+        <link href="~/Content/styles.css" rel="stylesheet" />
+        <link href="~/Content/menu.css" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width" />
+       
+    </head>
+    <body>
+        
+      @Styles.Render("~/Content/css")
+      <link href="~/GithubCss/gh-buttons.css" rel="stylesheet" />
+
+<link href="~/KendoUI/kendo.dataviz.default.min.css" rel="stylesheet" />
+<link href="~/KendoUI/kendo.default.min.css" rel="stylesheet" />
+<link href="~/KendoUI/kendo.common.min.css" rel="stylesheet" />
+   <link href="~/Content/source/jquery.fancybox.css" rel="stylesheet" />
+  <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<link href="~/Content/datePicker/jqx.base.css" rel="stylesheet" />
+<link href="~/Content/sit.css" rel="stylesheet" />
+
+<link href="~/Content/all.css" rel="stylesheet" />
+<link href="~/Content/styles.css" rel="stylesheet" />
+
+    <body>
+        <header style="height: 70px;background: white">
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">Online Hotel Booking 
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                                  
+                    <div id='cssmenu'>
+                        <ul>
+                            <li>@Html.ActionLink("Home", "Index", "Home",new{area=""},null)</li>
+                              <li>@Html.ActionLink("Reservation List", "ReservationInfoList", "ReservationDeatils",new{area="Admin"},new{id="ReservationLinkId"})</li>
+                            
+                          
+                            <li><a href='#'><span>Log On</span></a>
+                                <ul>
+                                    <li id="menulist">@Html.ActionLink("UserLogOn", "LogOn", "LoginSignUp",new{area="Customer"},null)</li>
+                                    <li id="menulis">@Html.ActionLink("AdminLogOn", "LogOn", "AdminLogOn",new{area="Admin"},null)</li>
+                                </ul>
+        
+
+                            </li>
+                       <li>@Html.ActionLink("Policies & Facilities", "Index", "PoliciesAndFacilities",new{area=""},null)</li>
+                           
+                            <li class='last'>@Html.ActionLink("Contact With Me", "AboutMe", "Home",new{area=""},null)</li>
+  
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        
+
+        <div id="body" >
+            @RenderSection("featured", required: false)
+        
+               @RenderBody()
+                 <div  id="divLoading" style="display: none">       
+                     <img src="~/Images/ajax-loader.gif" style="background-position: center;position: relative;left: 40%;top: 10px"/><br /><br/>        
+      </div>
+        </div>
+        <footer style="background: #ACE1AF;padding-bottom: -2%;bottom: 0px">
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>All Rght Preserved By:raselhossaingen@gmail.com</p>
+                </div>
+            </div>
+        </footer>
+
+            @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+      
+        <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.8.20.min.js"></script>
+         <script>
+             function loading() {
+                 $('#divLoading').dialog({
+                     title: '<span style="font-family:Courier New;"> Please Wait...</span>',
+                     open: function (event, ui) {
+                         $(".ui-dialog-titlebar-close").hide();
+                         $(this).load(url);
+                     }
+                 });
+             }
+
+             $("#ReservationLinkId").click(function () {
+                 loading();
+
+             });
+
+
+        </script>
+        <script src="~/Scripts/all.js"></script>
+        <script src="~/Scripts/slide.js"></script>
+        <script src="~/Scripts/script.js"></script>
+        <script src="~/Content/source/jquery.fancybox.js"></script>
+        <script src="~/Content/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+        
+        
+    </body>
+</html>
